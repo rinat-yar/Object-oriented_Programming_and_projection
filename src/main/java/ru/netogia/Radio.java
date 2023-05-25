@@ -3,6 +3,15 @@ package ru.netogia;
 public class Radio {
     private int currentRadioStation;
     private int currentRadioVolume;
+    private int maxStation;
+
+    public Radio() {
+        maxStation = 9;
+    }
+
+    public Radio(int stationsCount) {
+        maxStation = stationsCount - 1;
+    }
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
@@ -12,14 +21,14 @@ public class Radio {
         if (currentRadioStation < 0) {
             return;
         }
-        if (currentRadioStation > 9) {
+        if (currentRadioStation > maxStation) {
             return;
         }
         this.currentRadioStation = currentRadioStation;
     }
 
     public void nextStation() {
-        if (currentRadioStation != 9) {
+        if (currentRadioStation != maxStation) {
             currentRadioStation++;
         } else {
             currentRadioStation = 0;
@@ -30,7 +39,7 @@ public class Radio {
         if (currentRadioStation != 0) {
             currentRadioStation--;
         } else {
-            currentRadioStation = 9;
+            currentRadioStation = maxStation;
         }
     }
 
